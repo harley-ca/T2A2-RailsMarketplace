@@ -21,14 +21,31 @@
 </p>
 
 <p>
-  <strong>Status:</strong>
-  <%= @listing.status %>
-</p>
-
-<p>
   <strong>User:</strong>
-  <%= @listing.user_id %>
+  <%= @listing.user.username %>
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'New Review', new_listing_review_path(@listing.id) %> |
 <%= link_to 'Back', listings_path %>
+
+<h4>Reviews:</h4>
+<%@listing.reviews.each do |r| %>
+    <p>
+      <strong>Title:</strong>
+      <%= r.title %>
+    </p>
+        <p>
+      <strong>Description:</strong>
+      <%= r.description %>
+    </p>
+        <p>
+      <strong>Rating:</strong>
+      <%= r.rating %>
+    </p>
+        <p>
+      <strong>User:</strong>
+      <%= r.user.username %>
+    </p>
+    
+<% end%>

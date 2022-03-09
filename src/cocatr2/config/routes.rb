@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :listings
+  resources :listings do
+    resources :reviews, only:[:new, :create]
+  end
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
