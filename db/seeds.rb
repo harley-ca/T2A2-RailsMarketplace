@@ -5,3 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+#   :title, :type, :game, :description, :status, :user_id)
+    listings = Listing.create([{ title: 'Trading Gold', listing_type}])
