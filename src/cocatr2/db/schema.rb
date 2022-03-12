@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2022_03_09_101232) do
 
   create_table "applications", force: :cascade do |t|
     t.integer "application_type"
-    t.string "subject"
-    t.text "message"
-    t.integer "status"
+    t.string "subject", null: false
+    t.text "message", null: false
+    t.integer "status", null: false
     t.bigint "user_id", null: false
     t.bigint "listing_id", null: false
     t.datetime "created_at", precision: 6, null: false
