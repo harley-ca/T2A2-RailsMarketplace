@@ -26,6 +26,7 @@
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing) %> |
+<%= link_to 'New Application', new_listing_application_path(@listing.id) %> |
 <%= link_to 'New Review', new_listing_review_path(@listing.id) %> |
 <%= link_to 'Back', listings_path %>
 
@@ -49,3 +50,23 @@
     </p>
     
 <% end%>
+
+<h4>Applications TEMP</h4>
+<% @listing.applications.each do |a| %>
+  <p>
+    <strong>Subject:</strong>
+    <%= a.subject %>
+  </p>
+  <p>
+    <strong>Type:</strong>
+    <%= a.application_type %>
+  </p>
+  <p>
+    <strong>Message</strong>
+    <%= a.message %>
+  </p>
+  <p>
+    <strong>User:</strong>
+    <%= a.user.username %>
+  </p>
+<% end %>

@@ -9,17 +9,17 @@ class ApplicationsController < ApplicationController
 
     # Initialises a new review belonging to the loaded listing
     def new
-        @review = @listing.reviews.new
+        @application = @listing.applications.new
     end
 
     # Creates the new review
     def create
-        Application.create(subject: review_params[:subject], message: review_params[:message], application_type: review_params[:application_type], status: review_params[:status], listing: @listing, user: current_user)
+        Application.create(subject: application_params[:subject], message: application_params[:message], application_type: application_params[:application_type], status: 1, listing: @listing, user: current_user)
         redirect_to listing_path(@listing.id)
     end
 
-    def review_params
-        params.require(:application).permit(:subject, :message, :status, :application_type)
+    def application_params
+        params.require(:application).permit(:subject, :message, :status, :application_type, :user_id, :listing_id)
     end
  
 end
