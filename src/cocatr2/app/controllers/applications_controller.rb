@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class ApplicationsController < ApplicationController
     before_action :find_listing
     before_action :authenticate_user! , only: [:new, :create, :destroy]
 
@@ -14,12 +14,12 @@ class ReviewsController < ApplicationController
 
     # Creates the new review
     def create
-        Review.create(title: review_params[:title], description: review_params[:description], rating: review_params[:rating], listing: @listing, user: current_user)
+        Application.create(subject: review_params[:subject], message: review_params[:message], application_type: review_params[:application_type], status: review_params[:status], listing: @listing, user: current_user)
         redirect_to listing_path(@listing.id)
     end
 
     def review_params
-        params.require(:review).permit(:title, :description, :rating )
+        params.require(:application).permit(:subject, :message, :status, :application_type)
     end
  
 end
