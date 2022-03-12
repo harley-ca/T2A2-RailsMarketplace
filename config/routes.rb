@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :listings do
     resources :reviews, only:[:new, :create]
+    resources :applications, only: [:new, :create]
   end
 
   devise_for :users, controllers: {
