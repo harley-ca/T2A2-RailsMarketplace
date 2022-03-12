@@ -25,10 +25,10 @@
   <%= @listing.user.username %>
 </p>
 
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'New Application', new_listing_application_path(@listing.id) %> |
-<%= link_to 'New Review', new_listing_review_path(@listing.id) %> |
-<%= link_to 'Back', listings_path %>
+<%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-secondary btn-sm'  %> 
+<%= link_to 'New Application', new_listing_application_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
+<%= link_to 'New Review', new_listing_review_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
+<%= link_to 'Back', @listing, class: 'btn btn-secondary btn-sm' %>
 
 <h4>Reviews:</h4>
 <%@listing.reviews.each do |r| %>
