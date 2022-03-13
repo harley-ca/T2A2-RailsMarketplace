@@ -26,6 +26,7 @@
 </p>
 
 <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-secondary btn-sm'  %> 
+<%= link_to 'Reviews', listing_reviews_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'New Application', new_listing_application_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'New Review', new_listing_review_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'Back', @listing, class: 'btn btn-secondary btn-sm' %>
