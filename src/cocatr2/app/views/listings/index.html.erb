@@ -18,15 +18,13 @@
   <tbody>
     <% @listings.each do |listing| %>
       <tr>
-        <td><%= listing.title %></td>
+        <td><%= link_to listing.title, listing %></td>
         <td><%= listing.listing_type %></td>
         <td><%= listing.game %></td>
         <td><%= listing.description %></td>
         <td><%= listing.user.username %> [<%= listing.user.karma %>]</td>
         <td><%= listing.reviews.average(:rating)%></td>
-        <td><%= link_to 'Show', listing, class: 'btn btn-secondary btn-sm'  %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing), class: 'btn btn-secondary btn-sm'  %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary btn-sm'  %></td>
+
       </tr>
     <% end %>
   </tbody>
