@@ -24,12 +24,16 @@
   <strong>User:</strong>
   <%= @listing.user.username %>
 </p>
-
+<% if @listing.user == current_user %>
 <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-secondary btn-sm'  %> 
+<%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
+<% end %>
 <%= link_to 'Reviews', listing_reviews_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'New Application', new_listing_application_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'New Review', new_listing_review_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'Back', @listing, class: 'btn btn-secondary btn-sm' %>
+
+
 
 <h4>Reviews:</h4>
 <%@listing.reviews.each do |r| %>
