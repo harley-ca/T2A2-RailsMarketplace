@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
     before_action :find_listing
-    before_action :find_review, only: [:edit, :destroy, :update]
+    before_action :find_review, only: [:edit, :destroy, :update, :show]
     before_action :authenticate_user! , only: [:new, :create, :edit, :destroy, :update]
 
 
@@ -15,6 +15,9 @@ class ReviewsController < ApplicationController
     end
 
     def edit
+    end
+
+    def show
     end
 
     def destroy
@@ -35,7 +38,7 @@ class ReviewsController < ApplicationController
     # This doesn't work, not sure why
     def update
         @review.update(review_params)
-        redirect_to listing_review_path(@listing.id), notice: "Review for #{@listing.title} was updated successfully"
+        redirect_to "/listings/#{@listing.id}/reviews", notice: "Review for #{@listing.title} was updated successfully"
     end
     private
         # Find methods to ensure relevant objects are loaded

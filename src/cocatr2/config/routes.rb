@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :listings do
-    resources :reviews, only:[:new, :create, :index, :edit, :destroy, :update]
+    resources :reviews, only:[:new, :create, :index, :edit, :destroy, :update, :show]
     resources :applications, only: [:new, :create]
   end
 
