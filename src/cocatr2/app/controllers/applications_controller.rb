@@ -2,10 +2,7 @@ class ApplicationsController < ApplicationController
     before_action :find_listing
     before_action :authenticate_user! , only: [:new, :create, :destroy]
 
-    # Loaded as a before action to ensure we have the relevant listing loaded
-    def find_listing
-        @listing = Listing.find(params[:listing_id])
-    end
+
 
     # Initialises a new review belonging to the loaded listing
     def new
@@ -18,8 +15,15 @@ class ApplicationsController < ApplicationController
         redirect_to listing_path(@listing.id)
     end
 
-    def application_params
-        params.require(:application).permit(:subject, :message, :status, :application_type, :user_id, :listing_id)
-    end
+    private
+    
+        # Loaded as a before action to ensure we have the relevant listing loaded
+        def find_listing
+            @listing = Listing.find(params[:listing_id])
+        end
+        # Defines and whitelists the params
+        def application_params
+            params.require(:application).permit(:subject, :message, :status, :application_type, :user_id, :listing_id)
+        end
  
 end
