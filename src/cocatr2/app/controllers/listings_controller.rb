@@ -1,10 +1,14 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
-  before_action :authenticate_user! , only: [:new, :create, :destroy]
+  before_action :authenticate_user! , only: [:new, :create, :destroy, :my_listings]
 
   # This modified index method accepts search params
   def index
     @listings = Listing.filter_by(params.slice(:title, :username))
+  end
+
+  def my_listings
+    @listings = Listing.filter_by_username(current_user.username)
   end
 
   # GET /listings/1 or /listings/1.json

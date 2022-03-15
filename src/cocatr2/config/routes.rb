@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :applications, only: [:new, :create]
   end
 
+  get '/my_listings', to: 'listings#my_listings', as: "my_listings"
+
   
   devise_for :users, controllers: {
     registrations: 'users/registrations'

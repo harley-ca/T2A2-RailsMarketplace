@@ -1,13 +1,10 @@
 
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand navbar-dark bg-primary">
   <a class="navbar-brand" href="#">CoCaTr</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item">
             <%= link_to "Home", root_path, method: :get, class: "nav-link"%>
@@ -20,13 +17,10 @@
                 <%= link_to "New", new_listing_path, method: :get, class: "nav-link"%>
             </li>
             <li class="nav-item">
-                <%= link_to "My Listings", root_path, method: :get, class: "nav-link"%>
+                <%= link_to "My Listings", my_listings_path, method: :get, class: "nav-link"%>
             </li>
             <li class="nav-item">
                 <%= link_to "Profile", root_path, method: :get, class: "nav-link"%>
-            </li>
-            <li class="nav-item">
-                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link"%>
             </li>
         <% else %>
             <li class="nav-item">
@@ -43,5 +37,8 @@
             <button class="btn btn-outline-dark" type="submit">Search</button>
         </div>
     </form>
+    <% if user_signed_in? %>
+        <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-dark btn-sm"%>
+    <% end %> 
   </div>
 </nav>

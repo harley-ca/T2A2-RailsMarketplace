@@ -1,5 +1,5 @@
 class Listing < ApplicationRecord
-#include Filterable
+include Filterable
 include PgSearch::Model
   belongs_to :user
   has_many :reviews

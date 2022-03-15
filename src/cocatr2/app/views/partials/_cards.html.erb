@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Type</th>
+      <th>Game</th>
+      <th>Description</th>
+      <th>User</th>
+      <th>Average Rating</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |listing| %>
+      <tr>
+        <td><%= link_to listing.title, listing %></td>
+        <td><%= listing.listing_type %></td>
+        <td><%= listing.game %></td>
+        <td><%= listing.description %></td>
+        <td><%= listing.user.username %> [<%= listing.user.karma %>]</td>
+        <td><%= listing.reviews.average(:rating)%></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
