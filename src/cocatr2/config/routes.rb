@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   resources :listings do
     resources :reviews, only:[:new, :create, :index, :edit, :destroy, :update, :show]
-    resources :applications, only: [:new, :create]
+    resources :applications, only: [:new, :create, :update]
   end
-  resources :applications, only: [:update]
 
   get '/my_listings', to: 'listings#my_listings', as: "my_listings"
 
