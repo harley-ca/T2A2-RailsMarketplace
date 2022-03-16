@@ -17,5 +17,16 @@ include PgSearch::Model
   scope :filter_by_listing_type, -> (listing_type) {where listing_type: listing_type}
   scope :filter_by_username, -> (username) { joins(:user).where('username like ?', "#{username}")}
 
+  # Get the average rating of all reviews left on this listing
+  def average_rating
+    if self.reviews.count == 0
+      return 0
+    end
+    rating_sum = 0.0
+    self.reviews.each do |r|
+      rating_sum += r.rating.to_f
+    end
+    return rating_sum / self.reviews.count
+  end
 
 end

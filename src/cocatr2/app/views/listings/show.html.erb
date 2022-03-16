@@ -24,6 +24,10 @@
   <strong>User:</strong>
   <%= @listing.user.username %>
 </p>
+<p>
+  <strong>Average Rating:</strong>
+  <%= @listing.average_rating %>
+</p>
 <% if @listing.user == current_user %>
 <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
@@ -34,44 +38,11 @@
 <%= link_to 'Back', listings_path, class: 'btn btn-secondary btn-sm' %>
 
 
-
-<h4>Reviews:</h4>
-<%@listing.reviews.each do |r| %>
-    <p>
-      <strong>Title:</strong>
-      <%= r.title %>
-    </p>
-        <p>
-      <strong>Description:</strong>
-      <%= r.description %>
-    </p>
-        <p>
-      <strong>Rating:</strong>
-      <%= r.rating %>
-    </p>
-        <p>
-      <strong>User:</strong>
-      <%= r.user.username %>
-    </p>
-    
-<% end%>
-
-<h4>Applications TEMP</h4>
-<% @listing.applications.each do |a| %>
-  <p>
-    <strong>Subject:</strong>
-    <%= a.subject %>
-  </p>
-  <p>
-    <strong>Type:</strong>
-    <%= a.application_type %>
-  </p>
-  <p>
-    <strong>Message</strong>
-    <%= a.message %>
-  </p>
-  <p>
-    <strong>User:</strong>
-    <%= a.user.username %>
-  </p>
+<% if @listing.user == current_user %>
+  <h4>Pending Applications</h4>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= render "partials/application_cards" %>
+    </div>
+  </div>
 <% end %>

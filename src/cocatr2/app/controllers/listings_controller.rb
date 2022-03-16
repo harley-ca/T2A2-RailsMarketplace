@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1 or /listings/1.json
   def show
+    @applications = @listing.applications.filter_by_status("Pending")
   end
 
   # GET /listings/new
