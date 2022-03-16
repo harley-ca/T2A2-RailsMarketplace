@@ -20,7 +20,11 @@
         <td><%= listing.description %></td>
         <td><%= listing.user.username %> [<%= listing.user.karma %>]</td>
         <td><%= listing.reviews.average(:rating)%></td>
-
+        <% if ((listing.applications.where(status: 'Pending').count > 0) && (listing.user == current_user)) %>
+          <td>
+            <span class="badge bg-warning text-dark"><%= listing.applications.where(status: 'Pending').count %></span>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

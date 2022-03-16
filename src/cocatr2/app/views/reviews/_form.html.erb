@@ -1,6 +1,6 @@
 
-<%= simple_form_for @review, url: "/listings/#{@listing.id}/reviews/#{@review.id}" do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for  do |f| %>
+  <%= f.error_notification %>@review, url: "/listings/#{@listing.id}/reviews/#{@review.id}"
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
 

@@ -29,4 +29,9 @@ include PgSearch::Model
     return rating_sum / self.reviews.count
   end
 
+  def pending_apps
+    MyModel.where.not(status: 'reject').count
+    return self.reviews.where(status: 'Pending').count
+  end
+
 end

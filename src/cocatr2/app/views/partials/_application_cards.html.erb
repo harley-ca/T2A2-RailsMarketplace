@@ -11,7 +11,16 @@
             <p class="card-text">
                 <small class="text-muted">Last updated <%= time_ago_in_words(a.updated_at)%> ago.</small>
             </p>
+            <% if a.application_type == "Application" %>
+                <%= link_to 'Accept', application_path, method: :patch, data: { :status => 2, confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
+                <%= link_to 'Decline', listings_path, class: 'btn btn-danger btn-sm' %>
+            <% elsif a.application_type == "Report" %>
+                <%= link_to 'Listing', listings_path, class: 'btn btn-primary btn-sm' %>
+                <%= link_to 'User', listings_path, class: 'btn btn-dark text-light btn-sm' %>
+                <%= link_to 'Close Report', listings_path, class: 'btn btn-secondary btn-sm' %>
+            <% end %>
         </div>
+
         <% if false%>
             <img class="card-img-bottom" src="..." alt="Card image cap">
         <% end %>

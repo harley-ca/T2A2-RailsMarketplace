@@ -1,5 +1,5 @@
 class ApplicationsController < ApplicationController
-    before_action :find_listing
+    before_action :find_listing, except: [:update]
     before_action :authenticate_user! , only: [:new, :create, :destroy]
 
     def index
@@ -17,6 +17,10 @@ class ApplicationsController < ApplicationController
     def create
         Application.create(subject: application_params[:subject], message: application_params[:message], application_type: application_params[:application_type], status: 1, listing: @listing, user: current_user)
         redirect_to listing_path(@listing.id)
+    end
+
+
+    def update
     end
 
     private
