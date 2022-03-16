@@ -30,7 +30,7 @@
 </p>
 <% if @listing.user == current_user %>
 <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-secondary btn-sm'  %> 
-<%= link_to 'Close', listing_path, :status => 1, confirm: 'Are you sure?', class: 'btn btn-danger btn-sm'  %>
+<%= link_to 'Close', listings_path(@listing), method: :patch, :status => 1, confirm: 'Are you sure?', class: 'btn btn-danger btn-sm'  %>
 <%= link_to 'Destroy', @listing, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
 <% end %>
 <%= link_to 'Reviews', listing_reviews_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
