@@ -1,0 +1,11 @@
+development: 
+  cloud_name: "harleyscloudstuff"
+  api_key: "314916935226252"
+  api_secret: "onUA3Aaks4vhdAS2gCRxkorlcNw"
+  secure: true
+
+production:
+  cloud_name: "harleyscloudstuff"
+  api_key: "314916935226252"
+  api_secret: "onUA3Aaks4vhdAS2gCRxkorlcNw"
+  secure: true
