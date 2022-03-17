@@ -22,6 +22,7 @@ class ListingsController < ApplicationController
   end
 
 
+
   # GET /listings/1/edit
   def edit
   end
