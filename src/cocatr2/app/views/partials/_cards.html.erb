@@ -7,26 +7,32 @@
               <h5>
                 <span class="badge bg-secondary text-light"><%= a.listing_type %></span>    
                 <%= link_to a.title, a %>
-                <% if a.user == current_user %>
-                  <% if a.applications.where(status: 'Pending').count > 0%>
-                    <span class="badge bg-warning text-dark">!<%#= a.applications.where(status: 'Pending').count %></span>
-                  <% end %>
-                <% end %>
+
               </h5>
             </div>
             <h6>
-                <span class="badge bg-primary text-light">Game: <%= a.game %></span>
-                <span class="badge bg-secondary text-light">User: <%= a.user.username %></span>
-                <span class="badge bg-warning text-dark">Avg: <%= a.average_rating %></span>
+                <span class="badge bg-light text-dark">Game: <%= a.game %></span>
+                <span class="badge bg-light text-dark">User: <%= a.user.username %></span>
+                <span class="badge bg-light text-dark">Avg: <%= a.average_rating %></span>
             </h6>
             <p class="card-text"><%= a.description %></p>
             <p class="card-text">
+                <% if a.user == current_user %>
+                  <% if a.applications.where(status: 'Pending').where(application_type: 'Application').count > 0%>
+                    <span class="badge bg-warning text-dark">!</span>
+                  <% end %>
+                  <% if a.status == "Open"%>
+                    <span class="badge bg-success">Open</span>
+                  <% elsif a.status == "Closed" %>
+                    <span class="badge bg-danger">Closed</span>
+                  <% end %>
+                <% end %>
                 <small class="text-muted">Last updated <%= time_ago_in_words(a.updated_at)%> ago.</small>
             </p>
         </div>
 
-        <% if false%>
-            <img class="card-img-bottom" src="..." alt="Card image cap">
+        <% if a.listing_picture.attached? %>
+          <%= image_tag a.listing_picture, class: "card-img-bottom" %>
         <% end %>
     </div>
 <% end %>

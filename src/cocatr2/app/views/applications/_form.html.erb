@@ -6,7 +6,7 @@
   
   <div class="form-inputs">
     <%= f.input :subject %>
-    <%= f.input :message %>
+    <%= f.input :message, label: "Please provide your in-game username, as well as the details of your application."%>
     <%= f.collection_radio_buttons :application_type, [["Application", 'Application'], ["Report", 'Report']], :first, :last %>
 
   </div>

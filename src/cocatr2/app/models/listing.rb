@@ -4,6 +4,7 @@ include PgSearch::Model
   belongs_to :user
   has_many :reviews
   has_many :applications
+  has_one_attached :listing_picture
 
   # Enums define what the integer values mean, and provide an alternate way to use them
   enum listing_type: { "Coach" => 0, "Offer" => 1, "Request" => 2, "Trade" => 3 }

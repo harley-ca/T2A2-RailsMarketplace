@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
   resources :listings do
     resources :reviews, only:[:new, :create, :index, :edit, :destroy, :update, :show]
+    patch 'applications/:id/update', to: "applications#update_app", as: "update_app"
     resources :applications, only: [:new, :create, :update]
   end
 
   get '/my_listings', to: 'listings#my_listings', as: "my_listings"
   patch '/listings/:id/update', to: "listings#update_listing", as: "update_listing"
-  
+
+
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }

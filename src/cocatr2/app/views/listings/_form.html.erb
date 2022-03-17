@@ -4,11 +4,17 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :listing_type %>
-    <%= f.input :game %>
-    <%= f.input :description %>
+    <%= f.input :title, required: true %>
+    <%= f.input :listing_type, required: true %>
+    <%= f.input :game, required: true %>
+    <%= f.input :description, required: true %>
     <%= f.input :status %>
+    <label class="btn btn-primary btn-sm">
+      Add a picture!
+      <span style="display:none;">
+        <%= f.input :listing_picture, as: :file, required: true, multiple: false, accept: "image/jpg, image/png, image/jpeg" %>
+      </span>
+    </label>
   </div>
 
   <div class="form-actions">

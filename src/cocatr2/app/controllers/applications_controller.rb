@@ -1,6 +1,7 @@
 class ApplicationsController < ApplicationController
-    before_action :find_listing, except: [:update]
+    before_action :find_listing, except: []
     before_action :authenticate_user! , only: [:new, :create, :destroy]
+    before_action :find_app, only: [:update_app]
 
     def index
         @applications = Application.filter_by(params.slice(:listing, :status, :application_type, :user))
@@ -20,7 +21,9 @@ class ApplicationsController < ApplicationController
     end
 
 
-    def update
+    def update_app
+        @application.update(status: params[:status])
+        redirect_to listing_url(@listing)
     end
 
     private
@@ -33,5 +36,7 @@ class ApplicationsController < ApplicationController
         def application_params
             params.require(:application).permit(:subject, :message, :status, :application_type, :user_id, :listing_id)
         end
- 
+        def find_app
+            @application = Application.find(params[:id])
+        end
 end
