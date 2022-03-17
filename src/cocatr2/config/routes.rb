@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   get '/my_listings', to: 'listings#my_listings', as: "my_listings"
-  get '/listing/:id/update', to: "listings#update", as: "update_listing"
+  get '/listings/:id/update', to: "listings#update", as: "update_listing"
   
   devise_for :users, controllers: {
     registrations: 'users/registrations'

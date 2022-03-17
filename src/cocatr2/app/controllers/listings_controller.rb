@@ -46,7 +46,7 @@ class ListingsController < ApplicationController
   # PATCH/PUT /listings/1 or /listings/1.json
   def update
     respond_to do |format|
-      if @listing.update(listing_params)
+      if @listing.update(listing_status_param)
         format.html { redirect_to listing_url(@listing), notice: "Listing was successfully updated." }
         format.json { render :show, status: :ok, location: @listing }
       else
@@ -75,5 +75,9 @@ class ListingsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def listing_params
       params.require(:listing).permit(:title, :listing_type, :game, :description, :status, :user_id)
+    end
+
+    def listing_status_param
+      params.require(:status)
     end
 end
