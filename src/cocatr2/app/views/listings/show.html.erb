@@ -40,6 +40,9 @@
   <% end %>
 <%= link_to 'Delete', update_listing_path(@listing, status: "Archived"), method: :patch, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'  %>
 <% end %>
+<% if current_user.admin? %>
+<%= link_to 'Remove', update_listing_path(@listing, status: "Removed"), method: :patch, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm' %>
+<% end %>
 <%= link_to 'Reviews', listing_reviews_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'New Application', new_listing_application_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'New Review', new_listing_review_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
