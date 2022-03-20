@@ -75,11 +75,11 @@ Enum_help - This gem provides extra functionality to enums, and is used to simpl
 
 <img src="/docs/wireframe_images/cocatr_form_tablet.png" alt="Tablet new listing form" style="width: 80%;">
 
-<img src="/docs/wireframe_images/cocatr_mobile_show.png" alt="Mobile listing show page" style="height: 300px;">
+<img src="/docs/wireframe_images/cocatr_mobile_show.png" alt="Mobile listing show page" style="height: 600px;">
 
 ## Entity Relationship Diagram
 
-<img src="/docs/erd2.png">
+<img src="/docs/erd2.png" alt="ERD" style="width: 80%;">
 
 ## Different high level components
 
