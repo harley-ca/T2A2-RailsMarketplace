@@ -71,11 +71,11 @@ Enum_help - This gem provides extra functionality to enums, and is used to simpl
 
 ### Examples
 
-<img src="/docs/wireframes_images/cocatr_listing_browse.png" alt="Sitemap" style="width: 80%;">
+<img src="/docs/wireframe_images/cocatr_listing_browse.png" alt="Browser listing page" style="width: 80%;">
 
-<img src="/docs/wireframes_images/cocatr_form_tablet.png" alt="Sitemap" style="width: 80%;">
+<img src="/docs/wireframe_images/cocatr_form_tablet.png" alt="Tablet new listing form" style="width: 80%;">
 
-<img src="/docs/wireframes_images/cocatr_mobile_show.png" alt="Sitemap" style="width: 80%;">
+<img src="/docs/wireframe_images/cocatr_mobile_show.png" alt="Mobile listing show page" style="width: 80%;">
 
 ## Entity Relationship Diagram
 
