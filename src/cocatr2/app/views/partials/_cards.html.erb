@@ -26,6 +26,7 @@
                   <% end %>
                 <% end %>
                 <small class="text-muted">Last updated <%= time_ago_in_words(a.updated_at)%> ago.</small>
+                <%= link_to "Show", a, class: 'btn btn-primary btn-sm' %>
             </p>
         </div>
 

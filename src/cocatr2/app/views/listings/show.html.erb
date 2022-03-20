@@ -1,37 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @listing.title %>
-</p>
-
-<p>
-  <strong>Type:</strong>
-  <%= @listing.listing_type %>
-</p>
-
-<p>
-  <strong>Game:</strong>
-  <%= @listing.game %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @listing.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @listing.user.username %>
-</p>
-<p>
-  <strong>Average Rating:</strong>
-  <%= @listing.average_rating %>
-</p>
-<% if @listing.listing_picture.attached? %>
-  <%= image_tag @listing.listing_picture %>
-<% end %>
-<% if @listing.user == current_user %>
+<div class="card text-center" style="max-height: 75%;">
+  <div class="card-header">
+    <%= @listing.listing_type%> - <%= @listing.game %> - <%= @listing.average_rating%>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"><%= @listing.title %></h5>
+    <p class="card-text"><%= @listing.description %></p>
+    <% if @listing.user == current_user %>
 <%= link_to 'Edit', edit_listing_path(@listing), class: 'btn btn-secondary btn-sm'  %> 
   <% if @listing.status == "Open" %>
     <%= link_to 'Close', update_listing_path(@listing, status: "Closed"), method: :patch, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm'  %>
@@ -43,17 +17,28 @@
 <% if current_user.admin? %>
 <%= link_to 'Remove', update_listing_path(@listing, status: "Removed"), method: :patch, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-sm' %>
 <% end %>
+<br><br>
 <%= link_to 'Reviews', listing_reviews_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
-<%= link_to 'New Application', new_listing_application_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
+<%= link_to 'Apply Now', new_listing_application_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'New Review', new_listing_review_path(@listing.id), class: 'btn btn-secondary btn-sm'  %> 
 <%= link_to 'Back', listings_path, class: 'btn btn-secondary btn-sm' %>
 
+  </div>
+  <div class="card-footer text-muted">
+    Posted by <%= @listing.user.username %> - Last updated <%= time_ago_in_words(@listing.updated_at)%> ago.
+  </div>
+  <% if @listing.listing_picture.attached? %>
+    <%= image_tag @listing.listing_picture, class: "card-img-bottom img-fluid" %>
+  <% end %>
+</div>
 
 <% if @listing.user == current_user %>
+  <% if @applications.count > 0 %>
   <h4>Pending Applications</h4>
   <div class="row">
     <div class="col-sm-6">
       <%= render "partials/application_cards" %>
     </div>
   </div>
+  <% end %>
 <% end %>

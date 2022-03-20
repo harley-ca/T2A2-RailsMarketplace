@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listings</h1>
+<h1>Listings</h1> <%= link_to 'New Listing', new_listing_path, class: "btn btn-primary btn-lg"  %>
   <div class="row">
     <div class="col-sm-6">
       <%= render "partials/cards" %>
@@ -8,4 +8,4 @@
   </div>
 <br>
 
-<%= link_to 'New Listing', new_listing_path, class: "btn btn-primary btn-lg"  %>
+
