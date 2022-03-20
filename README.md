@@ -26,7 +26,7 @@ My Listings page to view listings you’ve posted, with indications for which li
 
 ## Sitemap
 
-<img src="./docs/sitemap2.png" alt="Sitemap" style="width: 80%;">
+<img src="/docs/sitemap2.png" alt="Sitemap" style="width: 80%;">
 
 ## Screenshots
 
@@ -68,6 +68,14 @@ Enum_help - This gem provides extra functionality to enums, and is used to simpl
 [wireframes pdf](/docs/CoCaTr_Wireframes.pdf)
 
 [wireframes images](/docs/wireframe_images/)
+
+### Examples
+
+<img src="/docs/wireframes_images/cocatr_listing_browse.png" alt="Sitemap" style="width: 80%;">
+
+<img src="/docs/wireframes_images/cocatr_form_tablet.png" alt="Sitemap" style="width: 80%;">
+
+<img src="/docs/wireframes_images/cocatr_mobile_show.png" alt="Sitemap" style="width: 80%;">
 
 ## Entity Relationship Diagram
 
