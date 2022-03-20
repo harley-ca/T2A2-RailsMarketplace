@@ -35,6 +35,7 @@ class ReviewsController < ApplicationController
         Review.create(title: review_params[:title], description: review_params[:description], rating: review_params[:rating], listing: @listing, user: current_user)
         redirect_to listing_path(@listing.id)
     end
+    
     # This doesn't work, not sure why
     def update
         @review.update(review_params)

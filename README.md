@@ -154,7 +154,15 @@ While belonging to different Models, Applications and Reviews function largely t
 
 ## Project Management
 
+Trello was used to manage this project:
+
 [trello (includes user stories)](https://trello.com/b/buCLH71m/term-2-marketplace-app)
+
+### Examples
+
+<img src="/docs/trello1.png" alt="Trello page beginning" style="width: 80%;">
+
+<img src="/docs/trello2.png" alt="Trello page mid-project" style="width: 80%;">
 
 ## Database Schema Design
 
