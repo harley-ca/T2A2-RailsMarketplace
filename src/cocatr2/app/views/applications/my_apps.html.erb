@@ -1,0 +1,9 @@
+<% if @applications.count > 0 %>
+    <div class="row">
+        <div class="col-sm-6">
+        <%= render "partials/application_cards" %>
+        </div>
+    </div>
+<% else %>
+    <h3>You don't have any applications yet!</h3>
+<% end %>

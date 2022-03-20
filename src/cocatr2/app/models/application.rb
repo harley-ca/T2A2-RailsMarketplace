@@ -11,5 +11,5 @@ include Filterable
   scope :filter_by_application_type, -> (application_type) {where application_type: application_type}
   scope :filter_by_status, -> (status) {where status: status}
   scope :filter_by_listing, -> (listing) {where listing: listing}
-  scope :filter_by_user, -> (user) {where("user like ?", "#{user}")}
+  scope :filter_by_user, -> (user) {where user: user}
 end

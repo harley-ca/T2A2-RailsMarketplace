@@ -8,7 +8,7 @@ class ListingsController < ApplicationController
   end
 
   def my_listings
-    @listings = Listing.filter_by_username(current_user.username)
+    @listings = Listing.filter_by_user(current_user)
   end
 
   # GET /listings/1 or /listings/1.json

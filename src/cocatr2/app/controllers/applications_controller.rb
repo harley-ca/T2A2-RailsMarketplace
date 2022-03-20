@@ -1,13 +1,15 @@
 class ApplicationsController < ApplicationController
-    before_action :find_listing, except: []
-    before_action :authenticate_user! , only: [:new, :create, :destroy]
+    before_action :find_listing, except: [:my_apps]
+    before_action :authenticate_user!
     before_action :find_app, only: [:update_app]
 
     def index
         @applications = Application.filter_by(params.slice(:listing, :status, :application_type, :user))
     end
 
-
+    def my_apps
+        @applications = Application.filter_by_user(current_user).filter_by_application_type("Application")
+    end
 
     # Initialises a new review belonging to the loaded listing
     def new

@@ -16,7 +16,7 @@ include PgSearch::Model
   # Regular scopes for assorted views
   scope :filter_by_status, -> (status) {where status: status}
   scope :filter_by_listing_type, -> (listing_type) {where listing_type: listing_type}
-  scope :filter_by_username, -> (username) { joins(:user).where('username like ?', "#{username}")}
+  scope :filter_by_user, -> (user) { where user: user}
 
   # Get the average rating of all reviews left on this listing
   def average_rating

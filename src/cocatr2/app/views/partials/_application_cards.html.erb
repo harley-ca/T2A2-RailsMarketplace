@@ -4,7 +4,13 @@
         <div class="card-body">
             <h5 class="card-title text-dark"><%= a.subject %></h5>
             <h6>
-                <span class="badge bg-warning text-dark">Status: <%= a.status %></span>
+                <% if a.status == "Approved"%>
+                    <span class="badge bg-success text-light">Status: <%= a.status %></span>
+                <% elsif a.status == "Declined"%>
+                    <span class="badge bg-danger text-light">Status: <%= a.status %></span>
+                <% else %>
+                    <span class="badge bg-warning text-dark">Status: <%= a.status %></span>
+                <% end %>
                 <span class="badge bg-dark text-light">User: <%= a.user.username %></span>
             </h6>
             <p class="card-text"><%= a.message %></p>
@@ -12,8 +18,18 @@
                 <small class="text-muted">Last updated <%= time_ago_in_words(a.updated_at)%> ago.</small>
             </p>
             <% if a.application_type == "Application" %>
-                <%= link_to 'Accept', listing_update_app_path(a.listing, a.id , status: "Approved"), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
-                <%= link_to 'Decline', listing_update_app_path(a.listing, a.id , status: "Declined"), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
+                <% if a.listing.user == current_user %>
+                    <% if a.status == "Pending" %>
+                        <%= link_to 'Accept', listing_update_app_path(a.listing, a.id , status: "Approved"), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-success btn-sm'  %>
+                        <%= link_to 'Decline', listing_update_app_path(a.listing, a.id , status: "Declined"), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
+                    <% elsif a.status == "Approved" %>
+                        <%= link_to 'Complete', listing_update_app_path(a.listing, a.id , status: "Closed"), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-success btn-sm'  %>
+                        <%= link_to 'Cancel', listing_update_app_path(a.listing, a.id , status: "Declined"), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
+                    <% end %>
+                <% elsif a.user == current_user %>
+                    <%= link_to 'Delete', listing_update_app_path(a.listing, a.id , status: "Archived"), method: :patch, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm'  %>
+                <% end %>
+                
             <% elsif a.application_type == "Report" %>
                 <%= link_to 'Listing', listings_path, class: 'btn btn-primary btn-sm' %>
                 <%= link_to 'User', listings_path, class: 'btn btn-dark text-light btn-sm' %>

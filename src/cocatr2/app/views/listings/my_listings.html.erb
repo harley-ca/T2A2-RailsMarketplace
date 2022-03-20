@@ -1,8 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1>My Listings</h1>
-
-  <%= render "partials/cards" %>
+  <% if @listings.count > 0 %>
+    <%= render "partials/cards" %>
+  <% else %>
+    <h3>You don't have any listings yet!</h3>
+  <% end %>
 
 <br>
 
