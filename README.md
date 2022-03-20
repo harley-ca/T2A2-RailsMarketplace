@@ -30,7 +30,7 @@ My Listings page to view listings you’ve posted, with indications for which li
 
 ## Screenshots
 
-<img src="/docs/scrnhome.png" alt="Home page" style="width: 80%;">
+<img src="/docs/scrnHOME.png" alt="Home page" style="width: 80%;">
 <img src="/docs/scrnbrowse.png" alt="Browse listings" style="width: 80%;">
 <img src="/docs/scrnnew.png" alt="Create listing" style="width: 80%;">
 
