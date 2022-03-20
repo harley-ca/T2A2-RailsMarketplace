@@ -152,13 +152,107 @@ Listings act as a standalone post owned by a user, to which other users respond 
 
 While belonging to different Models, Applications and Reviews function largely the same way in regards to their database relations, containing one primary key and two foreign keys each. While the primary keys differ, as they refer to their table names respectively (Application_ID and Review_ID), their foreign key columns are identical, containing the Users column for their respective owners User_ID, as well as a Listings column to relate them the specific listing they were posted in response to.
 
-## Database Schema Design
-
-“Provide your schema.rb and discuss how it compares to the ERD you provided”
-
 ## Project Management
 
 [trello (includes user stories)](https://trello.com/b/buCLH71m/term-2-marketplace-app)
+
+## Database Schema Design
+
+While the ERD underwent multiple revisions in the planning phase, once the coding began the ERD stayed mostly the same, apart from a slight revision which resulted in combining the applications and reports into one table. Apart from the lack of Active Storage tables in the ERD and automatically generator attributes the ERD closely resembles the Schema.
+
+    ActiveRecord::Schema.define(version: 2022_03_17_051807) do
+
+    # These are extensions that must be enabled in order to support this database
+    enable_extension "plpgsql"
+
+    create_table "active_storage_attachments", force: :cascade do |t|
+        t.string "name", null: false
+        t.string "record_type", null: false
+        t.bigint "record_id", null: false
+        t.bigint "blob_id", null: false
+        t.datetime "created_at", null: false
+        t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+        t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+    end
+
+    create_table "active_storage_blobs", force: :cascade do |t|
+        t.string "key", null: false
+        t.string "filename", null: false
+        t.string "content_type"
+        t.text "metadata"
+        t.string "service_name", null: false
+        t.bigint "byte_size", null: false
+        t.string "checksum", null: false
+        t.datetime "created_at", null: false
+        t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+    end
+
+    create_table "active_storage_variant_records", force: :cascade do |t|
+        t.bigint "blob_id", null: false
+        t.string "variation_digest", null: false
+        t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+    end
+
+    create_table "applications", force: :cascade do |t|
+        t.integer "application_type"
+        t.string "subject", null: false
+        t.text "message", null: false
+        t.integer "status", null: false
+        t.bigint "user_id", null: false
+        t.bigint "listing_id", null: false
+        t.datetime "created_at", precision: 6, null: false
+        t.datetime "updated_at", precision: 6, null: false
+        t.index ["listing_id"], name: "index_applications_on_listing_id"
+        t.index ["user_id"], name: "index_applications_on_user_id"
+    end
+
+    create_table "listings", force: :cascade do |t|
+        t.string "title", null: false
+        t.integer "listing_type", null: false
+        t.string "game", null: false
+        t.text "description"
+        t.integer "status", null: false
+        t.bigint "user_id", null: false
+        t.datetime "created_at", precision: 6, null: false
+        t.datetime "updated_at", precision: 6, null: false
+        t.index ["user_id"], name: "index_listings_on_user_id"
+    end
+
+    create_table "reviews", force: :cascade do |t|
+        t.string "title", null: false
+        t.text "description", null: false
+        t.integer "rating", null: false
+        t.bigint "user_id", null: false
+        t.bigint "listing_id", null: false
+        t.datetime "created_at", precision: 6, null: false
+        t.datetime "updated_at", precision: 6, null: false
+        t.index ["listing_id"], name: "index_reviews_on_listing_id"
+        t.index ["user_id"], name: "index_reviews_on_user_id"
+    end
+
+    create_table "users", force: :cascade do |t|
+        t.string "email", default: "", null: false
+        t.string "encrypted_password", default: "", null: false
+        t.string "reset_password_token"
+        t.datetime "reset_password_sent_at"
+        t.datetime "remember_created_at"
+        t.string "username", null: false
+        t.boolean "admin", default: false, null: false
+        t.integer "karma", default: 0, null: false
+        t.datetime "created_at", precision: 6, null: false
+        t.datetime "updated_at", precision: 6, null: false
+        t.index ["email"], name: "index_users_on_email", unique: true
+        t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    end
+
+    add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+    add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+    add_foreign_key "applications", "listings"
+    add_foreign_key "applications", "users"
+    add_foreign_key "listings", "users"
+    add_foreign_key "reviews", "listings"
+    add_foreign_key "reviews", "users"
+    end
 
 
 
