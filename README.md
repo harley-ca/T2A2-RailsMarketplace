@@ -26,7 +26,7 @@ My Listings page to view listings you’ve posted, with indications for which li
 
 ## Sitemap
 
-<img src="/docs/sitemap2.png" alt="Sitemap" style="width: 80%;">
+<img src="./docs/sitemap2.png" alt="Sitemap" style="width: 80%;">
 
 ## Screenshots
 
@@ -65,23 +65,19 @@ Enum_help - This gem provides extra functionality to enums, and is used to simpl
 
 ## Wireframes
 
-<img src="/docs/scrnhome.png" alt="Sitemap" style="width: 80%;">
+[wireframes pdf](/docs/CoCaTr_Wireframes.pdf)
+
+[wireframes images](/docs/wireframe_images/)
 
 ## Entity Relationship Diagram
 
-# erd
+<img src="/docs/erd2.png">
 
 ## Different high level components
 
 CoCaTr is developed using Ruby on Rails, which is a full-stack framework and provides many tools, services and software that form the foundation that CoCaTr was built on. 
 
 At the heart of Rails is the Model-view-controller (MVC) structure which splits different functions of the application up into more manageable components, each handling a different aspect of the application. A key feature included in Rails is its inherited classes for each of these components, such as Application Record or Application Controller which provide a basic functionality to each new model or controller created within Rails. 
-
-
-# “How Rails uses inheritance, and models, views and controllers to make things more simple, for example to make a view more dynamic and avoid writing SQL
-
-# We’re looking for explanation of MVC, inheritance, application record, application controller, explain partials and erb”
-
 
 ## Third Party Services
 
@@ -110,6 +106,7 @@ User has many Applications
 User has many Reviews
 
 #### Listings
+
 Listings are the main “product” for CoCaTr, and as such are the main source of interaction between the other Models. As a core function of the application, they must be able to receive applications and reviews from other users. Additionally, Listings are currently the only model with the capability of being associated with images. The associations for the Listings are as follows:
 
 Listings belongs to User
@@ -121,7 +118,6 @@ Listing has one attached Listing Picture
 
 The application model is used for two distinct purposes, as applications which must be shown to the owner of a listing, as well as a report viewable by administrators. Despite their differences, the basic premise of a text post sent by a user to a listing was similar enough that they were condensed into one model. The associations for the Application model are as follows:
 
-
 Applications belong to User
 Applications belong to Listing
 
@@ -131,7 +127,6 @@ While similar to Applications, Reviews require slightly different attributes and
 
 Reviews belong to User
 Reviews belong to Listing
-
 
 ## Database Relations
 
@@ -155,7 +150,7 @@ While belonging to different Models, Applications and Reviews function largely t
 
 ## Project Management
 
-https://trello.com/b/buCLH71m/term-2-marketplace-app
+[trello (includes user stories)](https://trello.com/b/buCLH71m/term-2-marketplace-app)
 
 
 
